@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crimson Room - Restaurant</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #restaurant-name {
+            text-align: center;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            font-family: 'Playfair Display', serif;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        .carousel {
+            max-width: 80%;
+            margin: 20px auto;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .menu-card, .order-box {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .menu-table th, .menu-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .menu-table th {
+            background-color: #444;
+            color: white;
+        }
+        .menu-table tr:hover {
+            background-color: #f2f2f2;
+        }
+        .navbar {
+            background-color: #333;
+            padding: 15px;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="restaurant-name">The Crimson Room</h1>
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#order-box">Your Order</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="restaurantCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="Pizza.jpg" class="d-rectangle " alt="Pizza" height="400px" width="200px">
+            </div>
+            <div class="carousel-item">
+                <img src="Pasta.jpg" class="d-rectangle " alt="Pasta" height="400px" width="200px">
+            </div>
+            <div class="carousel-item">
+                <img src="Burger.jpg" class="d-rectangle " alt="Burger" height="400px" width="200px">>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    
+    <div class="menu-card" id="menu">
+        <h2 class="text-center">Our Menu</h2>
+        <table class="menu-table">
+            <tr>
+                <th>Dish Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>Margherita Pizza</td>
+                <td>₹560</td>
+                <td>Classic pizza with tomato sauce, mozzarella & basil</td>
+                <td><button class="btn btn-success" onclick="addItem('Margherita Pizza', '₹560')">Add</button> <button class="btn btn-danger" onclick="removeItem('Margherita Pizza')">Remove</button></td>
+            </tr>
+            <tr>
+                <td>Chicken Pasta</td>
+                <td>₹530</td>
+                <td>Creamy Indian white sauce pasta with tender chicken</td>
+                <td><button class="btn btn-success" onclick="addItem('Chicken Pasta', '₹530')">Add</button> <button class="btn btn-danger" onclick="removeItem('Chicken Pasta')">Remove</button></td>
+            </tr>
+            <tr>
+                <td>Chicken Burger</td>
+                <td>₹300</td>
+                <td>Chicken patty with fresh salad and sauce</td>
+                <td><button class="btn btn-success" onclick="addItem('Chicken Burger', '₹300')">Add</button> <button class="btn btn-danger" onclick="removeItem('Chicken Burger')">Remove</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="order-box" id="order-box">
+        <h2 class="text-center">Your Order</h2>
+        <ul id="order-list" class="list-group"></ul>
+    </div>
+
+    <footer>
+        <p>© 2025 The Crimson Room. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addItem(name, price) {
+            let orderList = document.getElementById("order-list");
+            let listItem = document.createElement("li");
+            listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+            listItem.textContent = `${name} - ${price}`;
+            listItem.setAttribute("data-name", name);
+            orderList.appendChild(listItem);
+        }
+        
+        function removeItem(name) {
+            let orderList = document.getElementById("order-list");
+            let items = orderList.getElementsByTagName("li");
+            for (let item of items) {
+                if (item.getAttribute("data-name") === name) {
+                    orderList.removeChild(item);
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
